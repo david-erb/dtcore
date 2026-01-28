@@ -1,0 +1,1 @@
+--8<-- "dtcore_library/include/dtcore/dtheaper.h:markdown-documentation"

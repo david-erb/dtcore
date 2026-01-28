@@ -1,3 +1,15 @@
+# cmake build directories
+build
+
+# mkdocs output
+mkdocs/site
+
+# don't source control sdkconfig files
+sdkconfig
+
+# output files from dtack_codier
+*.dtack_codier_review.txt
+
 # Prerequisites
 *.d
 
@@ -53,3 +65,5 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+*.prompt

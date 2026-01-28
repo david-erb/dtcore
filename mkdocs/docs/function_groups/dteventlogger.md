@@ -1,0 +1,1 @@
+--8<-- "dtcore_library/include/dtcore/dteventlogger.h:markdown-documentation"
