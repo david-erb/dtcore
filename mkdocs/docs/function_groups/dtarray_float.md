@@ -1,0 +1,1 @@
+--8<-- "dtcore_library/include/dtcore/dtarray_float.h:markdown-documentation"

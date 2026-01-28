@@ -1,0 +1,6 @@
+#pragma once
+
+#define DTCORE_VERSION_MAJOR 1
+#define DTCORE_VERSION_MINOR 0
+#define DTCORE_VERSION_PATCH 0
+#define DTCORE_VERSION "1.0.0"

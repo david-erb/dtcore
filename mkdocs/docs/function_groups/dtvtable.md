@@ -1,0 +1,1 @@
+--8<-- "dtcore_library/include/dtcore/dtvtable.h:markdown-documentation"

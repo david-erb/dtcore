@@ -1,0 +1,43 @@
+prefix: DTCORE_CONSTANTS_
+
+# Base constants
+base_constants:
+  - name: RANDOMIZER_MODEL_NUMBER_START
+    value: 10200
+
+  - name: KVP_LIST_MAGIC_NUMBER
+    value: 0x4B56504C  # 'KVPL' in ASCII
+  - name: KVP_KEY_WRITE_GUID
+    value: "write_guid"
+  - name: KVP_KEY_WRITE_COUNTER
+    value: "write_counter"  
+  - name: KVP_KEY_SIGNATURE
+    value: "signature"
+  - name: KVP_KEY_SELF_NODE_NAME
+    value: "self_node_name"
+  - name: KVP_KEY_WIFI_SSID
+    value: "wifi_ssid"
+  - name: KVP_KEY_WIFI_PASSWORD
+    value: "wifi_password"
+  - name: KVP_KEY_MQTT_HOST
+    value: "mqtt_host"
+  - name: KVP_KEY_MQTT_PORT
+    value: "mqtt_port"
+  - name: KVP_KEY_MQTT_WSPORT
+    value: "mqtt_wsport"
+  - name: KVP_KEY_MQTT_USER
+    value: "mqtt_user"
+  - name: KVP_KEY_MQTT_PASSWORD
+    value: "mqtt_password"
+
+# Enum definitions
+enums:
+  - name: RANDOMIZER_MODEL
+    base_constant: RANDOMIZER_MODEL_NUMBER_START
+    values:
+      - name: UNIFORM
+        value: 1
+      - name: BROWNIAN
+        value: 2
+      - name: BROWNIAN_GRAV
+        value: 3
