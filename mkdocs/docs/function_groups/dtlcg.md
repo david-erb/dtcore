@@ -1,1 +1,0 @@
---8<-- "dtcore_library/include/dtcore/dtlcg.h:markdown-documentation"

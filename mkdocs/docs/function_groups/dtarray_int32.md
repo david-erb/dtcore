@@ -1,1 +1,0 @@
---8<-- "dtcore_library/include/dtcore/dtarray_int32.h:markdown-documentation"

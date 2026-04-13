@@ -1,3 +1,13 @@
+/*
+ * dtguid -- 16-byte identifier with deterministic generation and serialization.
+ *
+ * Provides comparison, copy, zero-check, and three levels of text formatting
+ * for 128-bit identifiers.  Generation supports sequential process-local
+ * counters, hash-derived values from byte inputs or strings, and integer
+ * seeds.  Pack and unpack functions integrate with the dtpackx wire format.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 // See markdown documentation at the end of this file.
 

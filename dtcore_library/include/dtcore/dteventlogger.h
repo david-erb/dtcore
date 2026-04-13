@@ -1,3 +1,13 @@
+/*
+ * dteventlogger -- Fixed-size ring buffer for timestamped event logging.
+ *
+ * Accumulates a bounded number of fixed-width event records, overwriting
+ * the oldest entries when full.  Supports snapshot cloning for safe
+ * inspection under concurrent writes, and formats item1 records to the
+ * log facility or into an allocated string.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 // See markdown documentation at the end of this file.
 

@@ -1,3 +1,13 @@
+/*
+ * dttrap -- Conditional diagnostic accumulator with count-triggered callback.
+ *
+ * Accumulates formatted text lines and increments a counter on each event.
+ * Once the count reaches a configured threshold, trapping stops and an
+ * optional callback fires.  Intended for capturing the first N occurrences
+ * of a repeating condition during debugging.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 #include <stdint.h>

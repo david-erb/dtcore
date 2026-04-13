@@ -1,3 +1,13 @@
+/*
+ * dtlog -- Leveled logging with pluggable sink and lazy initialization.
+ *
+ * Provides tagged, severity-leveled message emission through a lazily
+ * initialized default logger that writes to stdout.  The sink, hook, and
+ * output file are all replaceable after initialization.  A pre-emit hook
+ * can suppress individual messages, and dterr chain emission is built in.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 // See markdown documentation at the end of this file.

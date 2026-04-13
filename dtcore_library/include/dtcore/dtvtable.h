@@ -1,3 +1,13 @@
+/*
+ * dtvtable -- Model-indexed vtable registry for runtime dispatch.
+ *
+ * Maps 32-bit model numbers to vtable pointers using caller-provided
+ * parallel arrays.  Registration is idempotent for existing mappings.
+ * Lookup uses a linear scan up to the first empty slot.  Macros reduce
+ * the boilerplate of defining and dispatching vtable-based APIs.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 // See markdown documentation at the end of this file.
@@ -48,16 +58,29 @@ dtvtable_get(dtvtable_registry_t* reg, int32_t model_number, void** vtable);
 // --------------------------------------------------------------------------------------------
 // convenience macro to define vtable-dispatching functions for a class
 #define DTVTABLE_DISPATCH(CLASS, NAME, ARGS, PARAMS, RET)                                                                      \
-    RET CLASS##_##NAME(CLASS##_handle h ARGS)                                                                                  \
+    RET CLASS##_##NAME(CLASS##_handle handle ARGS)                                                                             \
     {                                                                                                                          \
-        if (!h)                                                                                                                \
+        if (!handle)                                                                                                           \
             return dterr_new(DTERR_FAIL, DTERR_LOC, NULL, #CLASS " handle is NULL");                                           \
-        int32_t model = *((int32_t*)h);                                                                                        \
+        int32_t model = *((int32_t*)handle);                                                                                   \
         CLASS##_vt_t* vt = NULL;                                                                                               \
         dterr_t* dterr = CLASS##_get_vtable(model, &vt);                                                                       \
         if (dterr)                                                                                                             \
             return dterr;                                                                                                      \
-        return vt->NAME((void*)h PARAMS);                                                                                      \
+        return vt->NAME((void*)handle PARAMS);                                                                                 \
+    }
+
+#define DTVTABLE_GET_FUNCTION(HANDLE, CLASS, FUNCTION, FN_VAR)                                                                 \
+    {                                                                                                                          \
+        int32_t model_number = ((int32_t*)HANDLE)[0];                                                                          \
+        CLASS##_vt_t* vtable = NULL;                                                                                           \
+        DTERR_C(CLASS##_get_vtable(model_number, &vtable));                                                                    \
+        FN_VAR = vtable->FUNCTION;                                                                                             \
+        if (FN_VAR == NULL)                                                                                                    \
+        {                                                                                                                      \
+            dterr = dterr_new(DTERR_BADARG, DTERR_LOC, NULL, "%s is NULL", #CLASS "_" #FUNCTION);                              \
+            goto cleanup;                                                                                                      \
+        }                                                                                                                      \
     }
 
 #if MARKDOWN_DOCUMENTATION

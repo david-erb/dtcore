@@ -1,3 +1,13 @@
+/*
+ * dtrandomizer -- Vtable facade for polymorphic random integer generation.
+ *
+ * Defines a three-method dispatch interface for producing the next value,
+ * resetting state, and disposing an instance.  Concrete implementations
+ * register a vtable keyed by model number; callers hold an opaque handle
+ * and invoke the dispatcher without knowing the underlying algorithm.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 #include <stdint.h>

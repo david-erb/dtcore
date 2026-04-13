@@ -1,3 +1,14 @@
+/*
+ * dtobject -- Vtable facade for basic object lifecycle and identity operations.
+ *
+ * Defines a seven-method dispatch interface covering creation, copy, disposal,
+ * equality, class-name query, interface membership, and string rendering.
+ * Implementations register a vtable keyed by model number; the facade
+ * dispatches through opaque handles, enabling generic containers and utilities
+ * to manage objects without knowing their concrete types.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 #include <stdbool.h>

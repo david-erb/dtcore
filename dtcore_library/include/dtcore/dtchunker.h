@@ -1,3 +1,14 @@
+/*
+ * dtchunker -- Buffer chunking and reassembly for size-limited transports.
+ *
+ * Splits a source buffer into fixed-size chunks for sequential transmission
+ * and reassembles received chunks back into the original buffer.  A header
+ * chunk carries total length and a magic number for stream validation.
+ * Export and import modes are mutually exclusive per session; internal
+ * buffers are reused across resets to avoid repeated allocation.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 // See markdown documentation at the end of this file.
 

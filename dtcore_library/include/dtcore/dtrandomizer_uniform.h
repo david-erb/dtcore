@@ -1,3 +1,13 @@
+/*
+ * dtrandomizer_uniform -- Uniform step random walk within a bounded range.
+ *
+ * Generates successive integer values by applying a bounded uniform random
+ * step from a home position, using an LCG for the underlying randomness.
+ * Implements the dtrandomizer, dtobject, and dtpackable facades for
+ * polymorphic use and binary serialization of configuration and state.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 #include <stdbool.h>

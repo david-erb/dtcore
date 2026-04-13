@@ -1,3 +1,12 @@
+/*
+ * dtguidable_pool -- Fixed-capacity pool of guidable handles with GUID lookup.
+ *
+ * Stores a bounded set of dtguidable handles and supports insertion, removal,
+ * count query, and GUID-based search.  Includes binary serialization for
+ * packing pool state into a byte buffer.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 #include <dtcore/dterr.h>

@@ -1,3 +1,12 @@
+/*
+ * dtwallclock -- Wallclock duration formatting helpers.
+ *
+ * Formats integer microsecond or millisecond durations into fixed-width
+ * HH:MM:SS strings suitable for log output and diagnostics.  Avoids
+ * dynamic allocation by writing into caller-provided storage.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 #include <dtcore/dterr.h>

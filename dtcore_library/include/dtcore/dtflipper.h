@@ -1,3 +1,13 @@
+/*
+ * dtflipper -- Dual-buffer ownership flipping with busy-state coordination.
+ *
+ * Manages two preallocated buffers with upper/lower roles that can be
+ * swapped when neither is held.  Busy flags prevent flipping while either
+ * buffer is in use, and a critical-path variant avoids system calls for
+ * use inside interrupt or critical section contexts.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 // See markdown documentation at the end of this file.
 

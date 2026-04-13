@@ -72,6 +72,11 @@ dtheaper_alloc_and_zero(int32_t length, const char* why, void** payload)
     DTERR_C(dtheaper_alloc(length, why, payload));
     DTERR_C(dtheaper_fill(*payload, 0));
 cleanup:
+    if (dterr != NULL && payload != NULL && *payload != NULL)
+    {
+        dtheaper_free(*payload);
+        *payload = NULL;
+    }
     return dterr;
 }
 
@@ -163,3 +168,5 @@ dtheaper_free(void* payload)
 
     free(header);
 }
+
+// 2026-04-10 crev v1.0.2

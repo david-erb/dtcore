@@ -1,3 +1,13 @@
+/*
+ * dtunittest -- Minimal C unit-test harness for suites, assertions, and reporting.
+ *
+ * Provides suite and test runners, a pattern filter, per-test setup and
+ * teardown hooks, and optional ledger auditing for leak detection.  Assert
+ * macros cover boolean, integer, float, pointer, string, and byte-buffer
+ * comparisons, all jumping to a caller-defined cleanup label on failure.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 // See markdown documentation at the end of this file.
 
@@ -238,7 +248,7 @@ dtunittest_each_error_callback(dterr_t* dterr, void* context);
 //
 // Note: Use when you want `<=` or `<` style checks around @p EXPECTED within @p TOLERANCE.
 //
-#define DTUNITTEST_ASSERT_DOUBLE(GOT, OPERATOR, TOLERANCE, EXPECTED)                                                           \
+#define DTUNITTEST_ASSERT_DOUBLE(GOT, OPERATOR, EXPECTED, TOLERANCE)                                                           \
     if (!(fabs((GOT) - (EXPECTED)) OPERATOR(TOLERANCE)))                                                                       \
     {                                                                                                                          \
         dterr = dterr_new(DTERR_ASSERTION,                                                                                     \

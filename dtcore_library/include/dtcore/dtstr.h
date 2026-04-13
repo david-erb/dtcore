@@ -1,3 +1,13 @@
+/*
+ * dtstr -- Heap-allocated string formatting and concatenation.
+ *
+ * Provides printf-style string construction into new heap allocations and
+ * appending of formatted text to existing ones with optional separators.
+ * All allocations are tracked through the dtstr ledger channel; pair every
+ * allocation with a matching dispose call.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 // See markdown documentation at the end of this file.
 

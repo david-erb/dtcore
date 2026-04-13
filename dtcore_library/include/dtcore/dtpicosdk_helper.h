@@ -1,3 +1,12 @@
+/*
+ * dtpicosdk_helper -- RP2040 Pico SDK convenience helpers.
+ *
+ * Provides initialization, reboot, bootloader entry, and keyboard polling
+ * wrappers for the Raspberry Pi Pico SDK.  Simplifies common startup and
+ * interactive-prompt patterns used in Pico-targeted firmware.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 extern void

@@ -1,7 +1,18 @@
+/*
+ * dtcore_constants -- Auto-generated compile-time constants for dtcore.
+ *
+ * Defines model number ranges for randomizers, rasters, and glyphs, plus
+ * the KVP list magic number and well-known string keys used for network
+ * configuration and node identity across the library.
+ *
+ * cdox v1.0.2
+ */
 // Auto-generated from YAML
 #pragma once
 
 #define DTCORE_CONSTANTS_RANDOMIZER_MODEL_NUMBER_START 10200
+#define DTCORE_CONSTANTS_RASTER_MODEL_NUMBER_START 10300
+#define DTCORE_CONSTANTS_GLYPH_MODEL_NUMBER_START 10400
 #define DTCORE_CONSTANTS_KVP_LIST_MAGIC_NUMBER 1263947852
 #define DTCORE_CONSTANTS_KVP_KEY_WRITE_GUID "write_guid"
 #define DTCORE_CONSTANTS_KVP_KEY_WRITE_COUNTER "write_counter"
@@ -18,3 +29,10 @@
 #define DTCORE_CONSTANTS_RANDOMIZER_MODEL_UNIFORM 10201
 #define DTCORE_CONSTANTS_RANDOMIZER_MODEL_BROWNIAN 10202
 #define DTCORE_CONSTANTS_RANDOMIZER_MODEL_BROWNIAN_GRAV 10203
+
+#define DTCORE_CONSTANTS_RASTER_MODEL_RGBA8888 10301
+#define DTCORE_CONSTANTS_RASTER_MODEL_RGB565 10302
+#define DTCORE_CONSTANTS_RASTER_MODEL_G8 10303
+#define DTCORE_CONSTANTS_RASTER_MODEL_B1 10304
+
+#define DTCORE_CONSTANTS_GLYPH_MODEL_DOS 10401

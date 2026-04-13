@@ -1,3 +1,13 @@
+/*
+ * dtguidable -- Vtable facade for GUID retrieval.
+ *
+ * Defines a single-method dispatch interface allowing any object to expose
+ * its GUID through a common handle without exposing its concrete type.
+ * Implementations register a vtable keyed by model number; callers invoke
+ * the dispatcher with an opaque handle.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 #include <stdint.h>
