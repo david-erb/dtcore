@@ -1,7 +1,10 @@
 # dtcore_library/CMakeLists.txt
 
-include(${CMAKE_CURRENT_LIST_DIR}/../dthelpers.cmake)
-dthelpers_glob(MY_SOURCES dt*.c)
+if(NOT DEFINED CMAKE_SCRIPT_MODE_FILE AND NOT DEFINED CMAKE_FIND_PACKAGE_NAME)
+    file(GLOB MY_SOURCES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/dt*.c)
+else()
+    file(GLOB MY_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/dt*.c)
+endif()
 
 # Exclude files added explicitly in platform blocks
 list(REMOVE_ITEM MY_SOURCES
