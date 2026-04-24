@@ -1,3 +1,13 @@
+/*
+ * dtledger -- Per-class allocation accounting with counters and watermarks.
+ *
+ * Tracks heap allocation and deallocation for named classes via static
+ * ledger instances.  Records current balance, cumulative totals, and high/low
+ * watermarks for both instance counts and byte usage.  Primarily used in
+ * unit tests to verify that all allocations are properly released.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 // See markdown documentation at the end of this file.

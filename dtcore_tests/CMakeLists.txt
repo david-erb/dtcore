@@ -1,40 +1,20 @@
-# source discovery (safe across normal configure + script/find-package modes)
-set(DTCORE_TEST_GLOB_PATTERNS
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/test_*.c
-)
-
 if(NOT DEFINED CMAKE_SCRIPT_MODE_FILE AND NOT DEFINED CMAKE_FIND_PACKAGE_NAME)
-    file(GLOB DTCORE_TEST_SOURCES
-        CONFIGURE_DEPENDS
-        ${DTCORE_TEST_GLOB_PATTERNS}
-    )
+    file(GLOB MY_SOURCES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/test_*.c)
 else()
-    # Script mode / find-package mode: CONFIGURE_DEPENDS is not allowed.
-    file(GLOB DTCORE_TEST_SOURCES
-        ${DTCORE_TEST_GLOB_PATTERNS}
-    )
+    file(GLOB MY_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/test_*.c)
 endif()
-
-set(DTCORE_TEST_INCLUDE
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
-
-set(DTCORE_LIBRARY_INCLUDE
-    ${CMAKE_CURRENT_SOURCE_DIR}/../dtcore_library/include
-)
 
 # ---- Zephyr -------------------------------------------------
 if (ZEPHYR_BASE OR DEFINED Zephyr_FOUND)
-    target_sources(app PRIVATE ${DTCORE_TEST_SOURCES})
-    target_include_directories(app PRIVATE
-        ${DTCORE_TEST_INCLUDE}
-        ${DTCORE_LIBRARY_INCLUDE}
-    )
+    zephyr_library_named(dtcore_tests)
+    zephyr_library_sources(${MY_SOURCES})
+    target_include_directories(dtcore_tests PUBLIC ${DTCORE_DIR}/dtcore_tests/include ${DTCORE_DIR}/dtcore_library/include)
+    target_link_libraries(dtcore_tests PUBLIC dtcore_library)
     
 # ---- ESP-IDF -------------------------------------------------
 elseif(DEFINED ENV{IDF_PATH})
     idf_component_register(
-        SRCS ${DTCORE_TEST_SOURCES}
+        SRCS ${MY_SOURCES}
         INCLUDE_DIRS include
         REQUIRES dtcore_library
     )
@@ -42,13 +22,13 @@ elseif(DEFINED ENV{IDF_PATH})
 # ---- Pico SDK -------------------------------------------------
 elseif(DEFINED PICO_BOARD)
     add_library(dtcore_tests STATIC
-        ${DTCORE_TEST_SOURCES}
+        ${MY_SOURCES}
     )
 
     target_include_directories(dtcore_tests
         PUBLIC
-            ${DTCORE_TEST_INCLUDE}
-            ${DTCORE_LIBRARY_INCLUDE}
+            ${DTCORE_DIR}/dtcore_tests/include
+            ${DTCORE_DIR}/dtcore_library/include
     )
 
     target_link_libraries(dtcore_tests
@@ -58,19 +38,8 @@ elseif(DEFINED PICO_BOARD)
 
 # ---- Linux -------------------------------------------------
 else()
-    add_library(dtcore_tests STATIC
-        ${DTCORE_TEST_SOURCES}
-    )
-
-    target_include_directories(dtcore_tests
-        PUBLIC
-            ${DTCORE_TEST_INCLUDE}
-            ${DTCORE_LIBRARY_INCLUDE}
-    )
-
-    target_link_libraries(dtcore_tests
-        PUBLIC
-            dtcore_library
-    )
+    add_library(dtcore_tests STATIC ${MY_SOURCES})
+    target_include_directories(dtcore_tests PUBLIC ${DTCORE_DIR}/dtcore_tests/include)
+    target_link_libraries(dtcore_tests PUBLIC dtcore_library)
 
 endif()

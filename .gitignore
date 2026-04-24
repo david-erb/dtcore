@@ -1,3 +1,5 @@
+.claude
+
 # cmake build directories
 build
 
@@ -67,3 +69,18 @@ dkms.conf
 *.dwo
 
 *.prompt
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.eggs/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

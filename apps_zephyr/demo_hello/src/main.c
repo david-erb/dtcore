@@ -9,5 +9,5 @@ main()
     // run the demo hello function
     dtcore_demo_hello();
 
-    return 0;
+    exit(0);
 }

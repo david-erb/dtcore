@@ -1,3 +1,12 @@
+/*
+ * dtlcg -- 32-bit linear congruential pseudo-random number generator.
+ *
+ * Provides a minimal, deterministic PRNG suitable for tests, simulations,
+ * and non-security uses.  State is caller-owned; seed explicitly before use.
+ * A range helper maps raw outputs to a bounded signed integer interval.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 #include <stdint.h>

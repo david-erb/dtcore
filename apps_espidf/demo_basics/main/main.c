@@ -27,4 +27,9 @@ app_main(void)
         dtlog_info(TAG, "running demo %d/%d %s...", i + 1, ndemos, demos[i].name);
         demos[i].func();
     }
+
+    printf("END OF app_main\n\n");
+
+    // Wait indefinitely to prevent the program from exiting.
+    vTaskDelay(portMAX_DELAY);
 }

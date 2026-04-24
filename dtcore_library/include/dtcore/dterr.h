@@ -1,3 +1,14 @@
+/*
+ * dterr -- Structured error capture and chaining with source location.
+ *
+ * Each error is a heap-allocated node carrying a code, source file, function,
+ * line number, formatted message, and an optional inner cause.  Macros
+ * standardize the goto-cleanup error-propagation pattern used throughout
+ * the library.  Errors can be iterated in causal order and disposed as
+ * a chain with a single call.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 // See markdown documentation at the end of this file.
@@ -16,21 +27,18 @@
 // Declare a ledger channel named "dterr" for allocation accounting.
 DTLEDGER_DECLARE(dterr);
 
-#define DTERR_OK                                                               \
-  0 ///< Operation succeeded; typically no ::dterr_t* is returned.
-#define DTERR_FAIL 1 ///< Generic failure when no better code applies.
-#define DTERR_ASSERTION                                                        \
-  2 ///< Internal assertion failed (usually indicates a programming error).
-#define DTERR_BADARG 3    ///< Invalid argument value or shape.
-#define DTERR_NOMEM 4     ///< Memory allocation failed (out of memory).
-#define DTERR_IO 5        ///< I/O error (read/write/open).
-#define DTERR_INTERRUPT 6 ///< Interrupted by signal or external event.
-#define DTERR_TIMEOUT 7   ///< Operation timed out.
-#define DTERR_NOTFOUND 8  ///< Requested item was not found.
-#define DTERR_EXISTS 9    ///< Attempt to create an item that already exists.
-#define DTERR_NOTIMPL 10  ///< Feature or code path is not implemented.
-#define DTERR_UNREACHABLE                                                      \
-  11 ///< Code path should be unreachable if invariants hold.
+#define DTERR_OK 0              ///< Operation succeeded; typically no ::dterr_t* is returned.
+#define DTERR_FAIL 1            ///< Generic failure when no better code applies.
+#define DTERR_ASSERTION 2       ///< Internal assertion failed (usually indicates a programming error).
+#define DTERR_BADARG 3          ///< Invalid argument value or shape.
+#define DTERR_NOMEM 4           ///< Memory allocation failed (out of memory).
+#define DTERR_IO 5              ///< I/O error (read/write/open).
+#define DTERR_INTERRUPT 6       ///< Interrupted by signal or external event.
+#define DTERR_TIMEOUT 7         ///< Operation timed out.
+#define DTERR_NOTFOUND 8        ///< Requested item was not found.
+#define DTERR_EXISTS 9          ///< Attempt to create an item that already exists.
+#define DTERR_NOTIMPL 10        ///< Feature or code path is not implemented.
+#define DTERR_UNREACHABLE 11    ///< Code path should be unreachable if invariants hold.
 #define DTERR_UNEXPECTED 12     ///< Unexpected state or input encountered.
 #define DTERR_OVERFLOW 13       ///< Numeric or capacity overflow.
 #define DTERR_UNDERFLOW 14      ///< Numeric or capacity underflow.
@@ -40,94 +48,105 @@ DTLEDGER_DECLARE(dterr);
 #define DTERR_BUSY 18           ///< Resource is busy or locked.
 #define DTERR_STATE 19          ///< Invalid state for requested operation.
 #define DTERR_INFRASTRUCTURE 20 ///< External service or infrastructure failure.
-#define DTERR_DELIBERATE                                                       \
-  21 ///< Intentional failure for tests/tools to short-circuit control flow.
-#define DTERR_INTERNAL 22 ///< Internal error (indicates a bug in the library).
-#define DTERR_BOUNDS 23   ///< Index or pointer out of bounds.
-#define DTERR_CORRUPT 24  ///< Data corruption detected.
-#define DTERR_NOTREADY 25 ///< Not ready for requested operation.
-#define DTERR_BADMAGIC 26 ///< Invalid magic number or signature.
-#define DTERR_OS 27       ///< Operating system error.
+#define DTERR_DELIBERATE 21     ///< Intentional failure for tests/tools to short-circuit control flow.
+#define DTERR_INTERNAL 22       ///< Internal error (indicates a bug in the library).
+#define DTERR_BOUNDS 23         ///< Index or pointer out of bounds.
+#define DTERR_CORRUPT 24        ///< Data corruption detected.
+#define DTERR_NOTREADY 25       ///< Not ready for requested operation.
+#define DTERR_BADMAGIC 26       ///< Invalid magic number or signature.
+#define DTERR_OS 27             ///< Operating system error.
 
-// Warning: Requires a `dterr_t* dterr` variable in scope and a `cleanup:`
-// label.
-#define DTERR_C(call)                                                          \
-  if ((dterr = (call)) != NULL) {                                              \
-    dterr = dterr_new(dterr->error_code, DTERR_LOC, dterr, "traceback");       \
-    goto cleanup;                                                              \
-  }
+// Warning: Requires a `dterr_t* dterr` variable in scope and a `cleanup:` label.
+#define DTERR_C(call)                                                                                                          \
+    if ((dterr = (call)) != NULL)                                                                                              \
+    {                                                                                                                          \
+        dterr = dterr_new(dterr->error_code, DTERR_LOC, dterr, "traceback");                                                   \
+        goto cleanup;                                                                                                          \
+    }
+
+// Appends `call`'s error to `dterr`, or assigns it if `dterr` is NULL
+#define DTERR_APPEND(call)                                                                                                     \
+    do                                                                                                                         \
+    {                                                                                                                          \
+        dterr_t* _call_err;                                                                                                    \
+        if ((_call_err = (call)) != NULL)                                                                                      \
+        {                                                                                                                      \
+            if (dterr == NULL)                                                                                                 \
+            {                                                                                                                  \
+                dterr = _call_err;                                                                                             \
+            }                                                                                                                  \
+            else                                                                                                               \
+            {                                                                                                                  \
+                dterr_append(dterr, _call_err);                                                                                \
+            }                                                                                                                  \
+        }                                                                                                                      \
+    } while (0);
 
 // Warning: Jumps to `cleanup:` on failure and assigns ::DTERR_ARGUMENT_NULL to
 // `dterr`.
-#define DTERR_ASSERT_NOT_NULL(ARG)                                             \
-  if ((ARG) == NULL) {                                                         \
-    dterr =                                                                    \
-      dterr_new(DTERR_ARGUMENT_NULL, DTERR_LOC, NULL, "%s is NULL", #ARG);     \
-    goto cleanup;                                                              \
-  }
+#define DTERR_ASSERT_NOT_NULL(ARG)                                                                                             \
+    if ((ARG) == NULL)                                                                                                         \
+    {                                                                                                                          \
+        dterr = dterr_new(DTERR_ARGUMENT_NULL, DTERR_LOC, NULL, "%s is NULL", #ARG);                                           \
+        goto cleanup;                                                                                                          \
+    }
 
 // ----------------------------------------------------------------------------
 // errno-based format string tokens
 #define DTERR_ERRNO_FORMAT "error %d (%s)"
 
 // errno-based format string arguments
-#define DTERR_ERRNO_ARGS()                                                     \
-  (errno, strerror(errno) ? strerror(errno) : "unknown error")
+#define DTERR_ERRNO_ARGS() (errno, strerror(errno) ? strerror(errno) : "unknown error")
 
 // errno-based return values
-#define DTERR_ERRNO_C(call)                                                    \
-  do {                                                                         \
-    int err;                                                                   \
-    if ((err = (call)) != 0) {                                                 \
-      dterr = dterr_new(                                                       \
-        DTERR_FAIL, DTERR_LOC, NULL, DTERR_ERRNO_FORMAT, DTERR_ERRNO_ARGS());  \
-      goto cleanup;                                                            \
-    }                                                                          \
-  } while (0);
+#define DTERR_ERRNO_C(call)                                                                                                    \
+    do                                                                                                                         \
+    {                                                                                                                          \
+        int err;                                                                                                               \
+        if ((err = (call)) != 0)                                                                                               \
+        {                                                                                                                      \
+            dterr = dterr_new(DTERR_FAIL, DTERR_LOC, NULL, DTERR_ERRNO_FORMAT, DTERR_ERRNO_ARGS());                            \
+            goto cleanup;                                                                                                      \
+        }                                                                                                                      \
+    } while (0);
 
 // ----------------------------------------------------------------------------
 // positive strerror-based format string tokens
 #define DTERR_POSERROR_FORMAT "error %d (%s)"
 
 // positive strerror-based format string arguments
-#define DTERR_POSERROR_ARGS(ERR)                                               \
-  (ERR), ((ERR) < 0 ? strerror(ERR) : "unknown error")
+#define DTERR_POSERROR_ARGS(ERR) (ERR), ((ERR) < 0 ? strerror(ERR) : "unknown error")
 
 // positive strerror-based return values
-#define DTERR_POSERROR_C(call)                                                 \
-  do {                                                                         \
-    int err;                                                                   \
-    if ((err = (call)) != 0) {                                                 \
-      dterr = dterr_new(DTERR_FAIL,                                            \
-                        DTERR_LOC,                                             \
-                        NULL,                                                  \
-                        DTERR_POSERROR_FORMAT,                                 \
-                        DTERR_POSERROR_ARGS(err));                             \
-      goto cleanup;                                                            \
-    }                                                                          \
-  } while (0);
+#define DTERR_POSERROR_C(call)                                                                                                 \
+    do                                                                                                                         \
+    {                                                                                                                          \
+        int err;                                                                                                               \
+        if ((err = (call)) != 0)                                                                                               \
+        {                                                                                                                      \
+            dterr = dterr_new(DTERR_FAIL, DTERR_LOC, NULL, DTERR_POSERROR_FORMAT, DTERR_POSERROR_ARGS(err));                   \
+            goto cleanup;                                                                                                      \
+        }                                                                                                                      \
+    } while (0);
 
 // ----------------------------------------------------------------------------
 // negative strerror-based format string tokens
 #define DTERR_NEGERROR_FORMAT "error %d (%s)"
 
 // negative strerror-based format string arguments
-#define DTERR_NEGERROR_ARGS(ERR)                                               \
-  (ERR), ((ERR) < 0 ? strerror(-(ERR)) : "unknown error")
+#define DTERR_NEGERROR_ARGS(ERR) (ERR), ((ERR) < 0 ? strerror(-(ERR)) : "unknown error")
 
 // negative strerror-based return values
-#define DTERR_NEGERROR_C(call)                                                 \
-  do {                                                                         \
-    int err;                                                                   \
-    if ((err = (call)) != 0) {                                                 \
-      dterr = dterr_new(DTERR_FAIL,                                            \
-                        DTERR_LOC,                                             \
-                        NULL,                                                  \
-                        DTERR_NEGERROR_FORMAT,                                 \
-                        DTERR_NEGERROR_ARGS(err));                             \
-      goto cleanup;                                                            \
-    }                                                                          \
-  } while (0);
+#define DTERR_NEGERROR_C(call)                                                                                                 \
+    do                                                                                                                         \
+    {                                                                                                                          \
+        int err;                                                                                                               \
+        if ((err = (call)) != 0)                                                                                               \
+        {                                                                                                                      \
+            dterr = dterr_new(DTERR_FAIL, DTERR_LOC, NULL, DTERR_NEGERROR_FORMAT, DTERR_NEGERROR_ARGS(err));                   \
+            goto cleanup;                                                                                                      \
+        }                                                                                                                      \
+    } while (0);
 // ----------------------------------------------------------------------------
 
 struct dterr_t;
@@ -135,27 +154,25 @@ typedef struct dterr_t dterr_t;
 
 struct dterr_t
 {
-  int32_t error_code; ///< One of `DTERR_` codes indicating the primary failure.
-  int32_t
-    line_number; ///< Source line where the error was created (see ::DTERR_LOC).
-  const char* source_file; ///< Source file of origin; static storage duration.
-  const char*
-    source_function;  ///< Function name of origin; static storage duration.
-  dterr_t* inner_err; ///< Optional inner/caused-by error; may be `NULL`.
-  char* message;      ///< Heap string owned by this node; `NULL` if no message.
-  void (*dispose)(struct dterr_t* self); ///< Virtual destructor for the node.
+    int32_t error_code;                    ///< One of `DTERR_` codes indicating the primary failure.
+    int32_t line_number;                   ///< Source line where the error was created (see ::DTERR_LOC).
+    const char* source_file;               ///< Source file of origin; static storage duration.
+    const char* source_function;           ///< Function name of origin; static storage duration.
+    dterr_t* inner_err;                    ///< Optional inner/caused-by error; may be `NULL`.
+    char* message;                         ///< Heap string owned by this node; `NULL` if no message.
+    void (*dispose)(struct dterr_t* self); ///< Virtual destructor for the node.
 };
 
 // Note: The returned node owns its `message` and (if provided) `inner_err`.
 // Call ::dterr_dispose() to free the entire chain.
 dterr_t*
 dterr_new(int32_t error_code,
-          int32_t line_number,
-          const char* source_file,
-          const char* source_function,
-          dterr_t* inner_err,
-          const char* format,
-          ...);
+  int32_t line_number,
+  const char* source_file,
+  const char* source_function,
+  dterr_t* inner_err,
+  const char* format,
+  ...);
 
 //
 // Expands to `__LINE__, __FILE__, __func__`.
@@ -170,7 +187,7 @@ dterr_each(dterr_t* self, dterr_each_callback_t callback, void* context);
 
 // Warning: Appending transfers ownership of `that` into `self`'s chain; do not
 // dispose `that` separately.
-void
+dterr_t*
 dterr_append(dterr_t* self, dterr_t* that);
 
 // Note: Safe to call on partially constructed nodes; frees the owned `message`
@@ -276,7 +293,7 @@ Params:
 > `dterr_t* self` Destination error node that receives the appended chain.  
 > `dterr_t* that` Source error node whose chain is transferred.  
 
-Return: `void`  No return value.
+Return: `dterr_t *`  New head of the error chain.
 
 ### dterr_dispose
 

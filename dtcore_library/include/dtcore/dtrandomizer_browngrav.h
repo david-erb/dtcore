@@ -1,3 +1,13 @@
+/*
+ * dtrandomizer_browngrav -- Brownian random walk with gravitational attraction.
+ *
+ * Generates successive integer values using a Brownian motion model with a
+ * configurable restoring force toward an attraction point.  Implements the
+ * dtrandomizer, dtobject, and dtpackable facades for polymorphic use and
+ * binary serialization of configuration and state.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 #include <stdbool.h>

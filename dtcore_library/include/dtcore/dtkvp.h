@@ -1,3 +1,13 @@
+/*
+ * dtkvp -- Resizable key-value pair list with serialization support.
+ *
+ * Provides a growable list of string key-value pairs with set, lookup,
+ * and removal by name.  Serializes to URL-encoded form, plain text, and
+ * compact binary with magic-number validation, using a doubling-growth
+ * allocation strategy to stay lean in resource-constrained environments.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 #include <stddef.h>
@@ -13,16 +23,16 @@
 // Key-value pair structure, each item is a pair of dtstr_dup'd strings.
 typedef struct dtkvp_t
 {
-  const char* key;
-  const char* value;
+    const char* key;
+    const char* value;
 } dtkvp_t;
 
 // simple list of key-value pairs, grows as needed
 typedef struct dtkvp_list_t
 {
-  dtkvp_t* items;
-  int32_t count;
-  dtbuffer_t* storage;
+    dtkvp_t* items;
+    int32_t count;
+    dtbuffer_t* storage;
 } dtkvp_list_t;
 
 // initialize the kvp list, allocating internal storage
@@ -38,6 +48,15 @@ dtkvp_list_set(dtkvp_list_t* self, const char* key, const char* value);
 extern dterr_t*
 dtkvp_list_get(dtkvp_list_t* self, const char* key, const char** value);
 
+// write kvp list as application/x-www-form-urlencoded into a newly allocated
+// output string. caller owns *out_string.
+extern dterr_t*
+dtkvp_list_urlencode(dtkvp_list_t* self, char** out_string);
+
+// parse application/x-www-form-urlencoded string and store entries into the list
+extern dterr_t*
+dtkvp_list_urldecode(dtkvp_list_t* self, const char* in_string);
+
 // get length needed to pack the kvp list
 extern dterr_t*
 dtkvp_list_packx_length(dtkvp_list_t* self DTPACKABLE_PACKX_LENGTH_ARGS);
@@ -52,9 +71,7 @@ dtkvp_list_unpackx(dtkvp_list_t* self DTPACKABLE_UNPACKX_ARGS);
 
 // write kvp as key=value\n strings extending the provided buffer
 extern dterr_t*
-dtkvp_list_compose_plain_text(dtkvp_list_t* self,
-                              char** s,
-                              const char* separator);
+dtkvp_list_compose_plain_text(dtkvp_list_t* self, char** s, const char* separator);
 
 // dispose the kvp list and all its contents, tolerates a null pointer or
 // partially initialized list

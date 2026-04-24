@@ -4,19 +4,16 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
 project(app_zephyr)
 
-set(DTCORE_TESTS          ${CMAKE_CURRENT_SOURCE_DIR}/../../dtcore_tests)
-set(DTCORE_LIBRARY        ${CMAKE_CURRENT_SOURCE_DIR}/../../dtcore_library)
+include(${CMAKE_CURRENT_LIST_DIR}/../../dthelpers.cmake)
+dthelpers_resolve(DTCORE_DIR "dtcore repo directory")
 
-# Bring in external object libraries
-add_subdirectory(${DTCORE_TESTS}          ${CMAKE_BINARY_DIR}/dtcore_tests)
-add_subdirectory(${DTCORE_LIBRARY}        ${CMAKE_BINARY_DIR}/dtcore_library)
+add_subdirectory(${DTCORE_DIR}/dtcore_tests          ${CMAKE_BINARY_DIR}/dtcore_tests)
+add_subdirectory(${DTCORE_DIR}/dtcore_library        ${CMAKE_BINARY_DIR}/dtcore_library)
 
-target_include_directories(app PRIVATE
-    ${DTCORE_TESTS}/include
-    ${DTCORE_LIBRARY}/include
-)
+target_link_libraries(app PRIVATE 
+    dtcore_tests
+    dtcore_library)
 
-# Use the Zephyr build target (called 'app') – this is created implicitly
 target_sources(app PRIVATE
     src/main.c
 )

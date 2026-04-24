@@ -1,3 +1,13 @@
+/*
+ * dtarray_int32 -- Fixed-capacity int32 array with binary serialization.
+ *
+ * Allocates instance and element storage as a single contiguous block for
+ * a fixed element count.  Provides pack and unpack helpers that serialize
+ * the count followed by each element as little-endian int32 values, with
+ * graceful handling of element count mismatches during deserialization.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 // See markdown documentation at the end of this file.
@@ -64,8 +74,8 @@ dtarray_int32_pack(const dtarray_int32_t* self,
 // `buflen`. Behavior on length mismatch:
 // - If payload has **more** than `self->count` items, extras are consumed to
 //   keep the stream in sync and **discarded**.
-// - If payload has **fewer** items, only the provided elements are updated; the
-//   remaining entries in `items` are left unchanged.
+// - If payload has **fewer** items, only the provided elements are stored; the
+//   remaining entries in `items` are **zeroed**.
 //
 //
 extern int32_t

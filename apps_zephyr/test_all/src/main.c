@@ -17,5 +17,5 @@ main()
     // print summary as final line of test output
     dtunittest_print_final(&unittest_control);
 
-    return unittest_control.total_fail_count == 0 ? 0 : 1;
+    exit(unittest_control.total_fail_count == 0 ? 0 : 1);
 }

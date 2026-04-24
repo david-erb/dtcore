@@ -60,7 +60,7 @@ dtarray_int32_pack_length(const dtarray_int32_t* self)
 
     /* [count:int32] + count * [element:int32] */
     const int32_t elen = dtpackx_pack_int32_length();
-    return elen + (self->count * elen);
+    return elen + (int32_t)((int64_t)self->count * elen);
 }
 
 // ------------------------------------------------------------------------------------
@@ -97,7 +97,7 @@ dtarray_int32_pack(const dtarray_int32_t* self, uint8_t* output, int32_t offset,
 int32_t
 dtarray_int32_unpack(dtarray_int32_t* self, const uint8_t* input, int32_t offset, int32_t buflen)
 {
-    if (!self || !input || offset < 0 || buflen < 0)
+    if (!self || !input || offset < 0 || buflen < 0 || self->count < 0)
         return -1;
 
     int32_t p = offset;
@@ -137,3 +137,5 @@ dtarray_int32_unpack(dtarray_int32_t* self, const uint8_t* input, int32_t offset
 
     return p - offset;
 }
+
+// 2026-04-11 crev v2.0.1

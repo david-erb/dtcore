@@ -25,5 +25,5 @@ main()
         demos[i].func();
     }
 
-    return 0;
+    exit(0);
 }

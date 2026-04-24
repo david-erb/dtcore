@@ -1,3 +1,13 @@
+/*
+ * dtringfifo -- Lock-free SPSC byte ring buffer over caller-provided storage.
+ *
+ * Implements single-producer single-consumer FIFO byte transfer using atomic
+ * head and tail indices with no OS locking.  Storage is caller-supplied;
+ * the ring does not allocate.  Partial push and pop are supported, with
+ * the return value indicating actual bytes transferred.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 #include <stdatomic.h>

@@ -1,3 +1,13 @@
+/*
+ * dtpackable -- Vtable facade for polymorphic binary serialization.
+ *
+ * Defines a four-method dispatch interface covering length query, pack,
+ * unpack, and post-unpack validation.  Implementations register a vtable
+ * keyed by model number; the facade dispatches through an opaque handle,
+ * enabling generic serialization pipelines without concrete type knowledge.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 #include <stdbool.h>

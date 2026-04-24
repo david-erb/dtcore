@@ -1,3 +1,14 @@
+/*
+ * dtpackx -- Little-endian binary pack and unpack helpers for C types.
+ *
+ * Provides length-query, pack, and unpack functions for integers, floats,
+ * booleans, bytes, float arrays, and NUL-terminated strings using a
+ * consistent little-endian wire format.  Return values are bytes consumed
+ * or written; negative indicates overflow.  Macros wrap calls with automatic
+ * bounds checking and error jumps.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 // See markdown documentation at the end of this file.

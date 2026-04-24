@@ -4,6 +4,10 @@ prefix: DTCORE_CONSTANTS_
 base_constants:
   - name: RANDOMIZER_MODEL_NUMBER_START
     value: 10200
+  - name: RASTER_MODEL_NUMBER_START
+    value: 10300
+  - name: GLYPH_MODEL_NUMBER_START
+    value: 10400
 
   - name: KVP_LIST_MAGIC_NUMBER
     value: 0x4B56504C  # 'KVPL' in ASCII
@@ -41,3 +45,22 @@ enums:
         value: 2
       - name: BROWNIAN_GRAV
         value: 3
+        
+  - name: RASTER_MODEL
+    base_constant: RASTER_MODEL_NUMBER_START
+    values:
+      - name: RGBA8888
+        value: 1
+      - name: RGB565
+        value: 2
+      - name: G8
+        value: 3
+      - name: B1
+        value: 4
+
+  - name: GLYPH_MODEL
+    base_constant: GLYPH_MODEL_NUMBER_START
+    values:
+      - name: DOS
+        value: 1
+        

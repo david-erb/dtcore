@@ -1,3 +1,13 @@
+/*
+ * dtarray_float -- Fixed-capacity float array with binary serialization.
+ *
+ * Provides heap-allocated, fixed-size storage for float values with copy,
+ * equality comparison, and pack/unpack serialization to byte buffers.
+ * The instance and element storage are allocated as a single contiguous
+ * block, keeping allocation and disposal simple.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 // See markdown documentation at the end of this file.

@@ -1,1 +1,0 @@
---8<-- "dtcore_library/include/dtcore/dtlog.h:markdown-documentation"

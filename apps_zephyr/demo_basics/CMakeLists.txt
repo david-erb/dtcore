@@ -1,22 +1,26 @@
+# demo_basics/CMakeLists.txt
+
 cmake_minimum_required(VERSION 3.20.0)
 
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
 project(app_zephyr)
 
-set(DTCORE_DEMOS          ${CMAKE_CURRENT_SOURCE_DIR}/../../dtcore_demos)
-set(DTCORE_LIBRARY        ${CMAKE_CURRENT_SOURCE_DIR}/../../dtcore_library)
+include(${CMAKE_CURRENT_LIST_DIR}/../../dthelpers.cmake)
+dthelpers_resolve(DTCORE_DIR "dtcore repo directory")
 
-# Bring in external object libraries
-add_subdirectory(${DTCORE_DEMOS}          ${CMAKE_BINARY_DIR}/dtcore_demos)
-add_subdirectory(${DTCORE_LIBRARY}        ${CMAKE_BINARY_DIR}/dtcore_library)
+add_subdirectory(${DTCORE_DIR}/dtcore_demos          ${CMAKE_BINARY_DIR}/dtcore_demos)
+add_subdirectory(${DTCORE_DIR}/dtcore_library        ${CMAKE_BINARY_DIR}/dtcore_library)
 
 target_include_directories(app PRIVATE
-    ${DTCORE_DEMOS}/include
-    ${DTCORE_LIBRARY}/include
-)
+    ${DTCORE_DIR}/dtcore_demos/include
+    ${DTCORE_DIR}/dtcore_library/include
+)   
 
-# Use the Zephyr build target (called 'app') – this is created implicitly
+target_link_libraries(app PRIVATE 
+    dtcore_demos
+    dtcore_library)
+
 target_sources(app PRIVATE
     src/main.c
 )

@@ -66,18 +66,22 @@ dterr_each(dterr_t* self, dterr_each_callback_t callback, void* context)
 }
 
 // ----------------------------------------------------------------
-void
+dterr_t*
 dterr_append(dterr_t* self, dterr_t* that)
 {
-    if (self == NULL || that == NULL)
-        return;
+    // nothing to append to, so just return 'that' as the new chain head
+    if (self == NULL)
+        return that;
+
+    if (that == NULL)
+        return self;
 
     // Prevent cycles: if 'that' is already somewhere in 'self' chain, do nothing.
     for (dterr_t* scan = self; scan != NULL; scan = scan->inner_err)
     {
         if (scan == that)
         {
-            return; // would create a cycle
+            return self; // would create a cycle
         }
     }
 
@@ -88,6 +92,7 @@ dterr_append(dterr_t* self, dterr_t* that)
         tail = tail->inner_err;
     }
     tail->inner_err = that;
+    return self;
 }
 
 // ----------------------------------------------------------------

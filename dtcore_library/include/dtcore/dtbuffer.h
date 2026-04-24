@@ -1,3 +1,14 @@
+/*
+ * dtbuffer -- Heap-backed buffer descriptor with explicit ownership semantics.
+ *
+ * Allocates or wraps a byte payload behind a lightweight descriptor that
+ * tracks length and ownership flags.  Only buffers created via
+ * dtbuffer_create() free their payload on disposal; wrapped buffers leave
+ * lifecycle management to the caller.  All allocations are tracked through
+ * the dtbuffer ledger channel.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 // See markdown documentation at the end of this file.
 

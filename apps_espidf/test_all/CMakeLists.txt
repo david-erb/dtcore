@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 
-set(DTCORE_LIBRARY         "${CMAKE_CURRENT_SOURCE_DIR}/../../dtcore_library")
-set(DTCORE_TESTS           "${CMAKE_CURRENT_SOURCE_DIR}/../../dtcore_tests")
+include(${CMAKE_CURRENT_LIST_DIR}/../../dthelpers.cmake)
+dthelpers_resolve(DTCORE_DIR "dtcore repo directory")
 
 set(EXTRA_COMPONENT_DIRS 
-    ${DTCORE_LIBRARY}
-    ${DTCORE_TESTS}
+    ${DTCORE_DIR}/dtcore_tests
+    ${DTCORE_DIR}/dtcore_library
 )
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)

@@ -1,14 +1,23 @@
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+/*
+ * dtheaper -- Heap allocator with embedded length metadata and ledger tracking.
+ *
+ * Wraps malloc with a length prefix stored ahead of the payload, enabling
+ * fill and release operations that are self-contained and safe.  All
+ * allocations and frees are counted through the dtheaper ledger channel,
+ * making leaks straightforward to detect in tests.
+ *
+ * cdox v1.0.2
+ */
+#pragma once
+
+#include <stdint.h>
 
 #include <dtcore/dterr.h>
 
 // for ledger tracking of mallocs/frees
 #include <dtcore/dtledger.h>
 
-// Declare a ledger channel named "dtstr" for allocation accounting.
+// Declare a ledger channel named "dtheaper" for allocation accounting.
 DTLEDGER_DECLARE(dtheaper);
 
 // ----------------------------------------------------------------

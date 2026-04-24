@@ -12,16 +12,18 @@
 void
 app_main(void)
 {
-  dtunittest_control_t unittest_control = { 0 };
-  unittest_control.should_print_suites = true;
-  unittest_control.should_print_tests = false;
-  unittest_control.should_print_errors = true;
+    dtunittest_control_t unittest_control = { 0 };
+    unittest_control.should_print_suites = true;
+    unittest_control.should_print_tests = false;
+    unittest_control.should_print_errors = true;
 
-  test_dtcore_matching(&unittest_control);
+    test_dtcore_matching(&unittest_control);
 
-  // print summary as final line of test output
-  dtunittest_print_final(&unittest_control);
+    // print summary as final line of test output
+    dtunittest_print_final(&unittest_control);
 
-  // Wait indefinitely to prevent the program from exiting.
-  vTaskDelay(portMAX_DELAY);
+    printf("END OF app_main\n\n");
+
+    // Wait indefinitely to prevent the program from exiting.
+    vTaskDelay(portMAX_DELAY);
 }

@@ -76,6 +76,51 @@ cleanup:
 }
 
 // ============================================================================
+// Example: urlencode / urldecode roundtrip with spaces and punctuation
+// ============================================================================
+static dterr_t*
+test_dtcore_dtkvp_example_urlencode_roundtrip(void)
+{
+    dterr_t* dterr = NULL;
+    dtkvp_list_t list;
+    dtkvp_list_t list2;
+    char* encoded = NULL;
+    const char* val = NULL;
+
+    DTERR_C(dtkvp_list_init(&list));
+    DTERR_C(dtkvp_list_init(&list2));
+
+    DTERR_C(dtkvp_list_set(&list, "first name", "David Erb"));
+    DTERR_C(dtkvp_list_set(&list, "city", "Stockholm"));
+    DTERR_C(dtkvp_list_set(&list, "note", "a+b & c/d"));
+
+    DTERR_C(dtkvp_list_urlencode(&list, &encoded));
+    DTUNITTEST_ASSERT_NOT_NULL(encoded);
+
+    // A few friendly sanity checks so the encoded form is visible in the test.
+    DTUNITTEST_ASSERT_TRUE(strstr(encoded, "first+name=David+Erb") != NULL);
+    DTUNITTEST_ASSERT_TRUE(strstr(encoded, "city=Stockholm") != NULL);
+    DTUNITTEST_ASSERT_TRUE(strstr(encoded, "note=a%2Bb+%26+c%2Fd") != NULL);
+
+    DTERR_C(dtkvp_list_urldecode(&list2, encoded));
+
+    DTERR_C(dtkvp_list_get(&list2, "first name", &val));
+    DTUNITTEST_ASSERT_EQUAL_STRING(val, "David Erb");
+
+    DTERR_C(dtkvp_list_get(&list2, "city", &val));
+    DTUNITTEST_ASSERT_EQUAL_STRING(val, "Stockholm");
+
+    DTERR_C(dtkvp_list_get(&list2, "note", &val));
+    DTUNITTEST_ASSERT_EQUAL_STRING(val, "a+b & c/d");
+
+cleanup:
+    dtkvp_list_dispose(&list2);
+    dtkvp_list_dispose(&list);
+    free(encoded);
+    return dterr;
+}
+
+// ============================================================================
 // init OK
 // ============================================================================
 static dterr_t*
@@ -356,6 +401,7 @@ test_dtcore_dtkvp(DTUNITTEST_SUITE_ARGS)
 {
 
     DTUNITTEST_RUN_TEST(test_dtcore_dtkvp_example_roundtrip);
+    DTUNITTEST_RUN_TEST(test_dtcore_dtkvp_example_urlencode_roundtrip);
 
     DTUNITTEST_RUN_TEST(test_dtcore_dtkvp_01_init_bad_args);
     DTUNITTEST_RUN_TEST(test_dtcore_dtkvp_02_init_ok);

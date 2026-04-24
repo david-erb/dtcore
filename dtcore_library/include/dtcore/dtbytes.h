@@ -1,3 +1,12 @@
+/*
+ * dtbytes -- Hexadecimal formatting of byte sequences.
+ *
+ * Formats a contiguous byte buffer as uppercase hex text grouped into
+ * 4-byte blocks separated by spaces.  Intended for diagnostic output
+ * and log inspection of raw binary data.
+ *
+ * cdox v1.0.2
+ */
 #pragma once
 
 // Composes input bytes into hex string grouped in 4-byte blocks
