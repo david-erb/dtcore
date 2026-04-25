@@ -2,174 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://david-erb.github.io/dtcore/index.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/demos/index.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/demos/demo_buffer.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/demos/demo_error.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/demos/demo_hello.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/demos/demo_random.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/demos/list.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/index.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtarray_float.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtarray_int32.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtbuffer.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtbytes.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtchunker.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dterr.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dteventlogger.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtflipper.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtguid.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtguidable.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtheaper.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtkvp.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtlcg.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtledger.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtlog.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtobject.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtpackable.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtpackx.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtrandomizer.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtrandomizer_browngrav.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtrandomizer_uniform.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtringfifo.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtstr.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dttrap.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtunittest.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtvtable.html</loc>
-         <lastmod>2026-01-28</lastmod>
-    </url>
-    <url>
-         <loc>https://david-erb.github.io/dtcore/function_groups/dtwallclock.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <loc>https://david-erb.github.io/dtcore/functions/index.html</loc>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/guides/index.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/guides/constants.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/guides/design_principles.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/guides/errors.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/guides/quick_start.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/guides/repository_structure.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/guides/running_apps.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
     <url>
          <loc>https://david-erb.github.io/dtcore/guides/vtables.html</loc>
-         <lastmod>2026-01-28</lastmod>
+         <lastmod>2026-04-25</lastmod>
     </url>
 </urlset>

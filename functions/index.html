@@ -1,0 +1,1230 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://david-erb.github.io/dtcore/functions/index.html">
+      
+      
+        <link rel="prev" href="../index.html">
+      
+      
+        <link rel="next" href="../demos/index.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Functions - dtcore Library</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="dtcore Library" class="md-header__button md-logo" aria-label="dtcore Library" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            dtcore Library
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Functions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/david-erb/dtcore/blob/main" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="dtcore Library" class="md-nav__button md-logo" aria-label="dtcore Library" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    dtcore Library
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/david-erb/dtcore/blob/main" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link md-nav__link--active">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../demos/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Demos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demos/demo_buffer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    demo_buffer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demos/demo_error.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    demo_error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demos/demo_hello.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    demo_hello
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demos/demo_random.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    demo_random
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../guides/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Guides
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/quick_start.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/running_apps.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/repository_structure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repository structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/design_principles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design principles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/errors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structured error handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/vtables.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virtual-table pattern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/constants.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cross-wire constants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Functions</h1>
+
+<details class="note">
+<summary><code>dtarray_float</code>&nbsp;&nbsp;&nbsp;Fixed-capacity float array with binary serialization.</summary>
+<p>Provides heap-allocated, fixed-size storage for float values with copy,
+equality comparison, and pack/unpack serialization to byte buffers.
+The instance and element storage are allocated as a single contiguous
+block, keeping allocation and disposal simple.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtarray_float.h" target="_blank">dtcore_library/include/dtcore/dtarray_float.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtarray_int32</code>&nbsp;&nbsp;&nbsp;Fixed-capacity int32 array with binary serialization.</summary>
+<p>Allocates instance and element storage as a single contiguous block for
+a fixed element count.  Provides pack and unpack helpers that serialize
+the count followed by each element as little-endian int32 values, with
+graceful handling of element count mismatches during deserialization.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtarray_int32.h" target="_blank">dtcore_library/include/dtcore/dtarray_int32.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtbuffer</code>&nbsp;&nbsp;&nbsp;Heap-backed buffer descriptor with explicit ownership semantics.</summary>
+<p>Allocates or wraps a byte payload behind a lightweight descriptor that
+tracks length and ownership flags.  Only buffers created via
+dtbuffer_create() free their payload on disposal; wrapped buffers leave
+lifecycle management to the caller.  All allocations are tracked through
+the dtbuffer ledger channel.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtbuffer.h" target="_blank">dtcore_library/include/dtcore/dtbuffer.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtbytes</code>&nbsp;&nbsp;&nbsp;Hexadecimal formatting of byte sequences.</summary>
+<p>Formats a contiguous byte buffer as uppercase hex text grouped into
+4-byte blocks separated by spaces.  Intended for diagnostic output
+and log inspection of raw binary data.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtbytes.h" target="_blank">dtcore_library/include/dtcore/dtbytes.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtchunker</code>&nbsp;&nbsp;&nbsp;Buffer chunking and reassembly for size-limited transports.</summary>
+<p>Splits a source buffer into fixed-size chunks for sequential transmission
+and reassembles received chunks back into the original buffer.  A header
+chunk carries total length and a magic number for stream validation.
+Export and import modes are mutually exclusive per session; internal
+buffers are reused across resets to avoid repeated allocation.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtchunker.h" target="_blank">dtcore_library/include/dtcore/dtchunker.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtcore</code>&nbsp;&nbsp;&nbsp;Top-level include for the dtcore library.</summary>
+<p>Umbrella header that pulls in the library version constants.
+Include individual module headers directly for specific functionality.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtcore.h" target="_blank">dtcore_library/include/dtcore/dtcore.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtcore_constants</code>&nbsp;&nbsp;&nbsp;Auto-generated compile-time constants for dtcore.</summary>
+<p>Defines model number ranges for randomizers, rasters, and glyphs, plus
+the KVP list magic number and well-known string keys used for network
+configuration and node identity across the library.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtcore_constants.h" target="_blank">dtcore_library/include/dtcore/dtcore_constants.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtcore_helper</code>&nbsp;&nbsp;&nbsp;Saturating integer arithmetic macros.</summary>
+<p>Provides in-place increment and add macros for int32_t counters that
+clamp at INT32_MAX rather than wrapping, suitable for monotonic counters
+where overflow would corrupt state.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtcore_helper.h" target="_blank">dtcore_library/include/dtcore/dtcore_helper.h</a></p>
+</details>
+<details class="note">
+<summary><code>dterr</code>&nbsp;&nbsp;&nbsp;Structured error capture and chaining with source location.</summary>
+<p>Each error is a heap-allocated node carrying a code, source file, function,
+line number, formatted message, and an optional inner cause.  Macros
+standardize the goto-cleanup error-propagation pattern used throughout
+the library.  Errors can be iterated in causal order and disposed as
+a chain with a single call.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dterr.h" target="_blank">dtcore_library/include/dtcore/dterr.h</a></p>
+</details>
+<details class="note">
+<summary><code>dteventlogger</code>&nbsp;&nbsp;&nbsp;Fixed-size ring buffer for timestamped event logging.</summary>
+<p>Accumulates a bounded number of fixed-width event records, overwriting
+the oldest entries when full.  Supports snapshot cloning for safe
+inspection under concurrent writes, and formats item1 records to the
+log facility or into an allocated string.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dteventlogger.h" target="_blank">dtcore_library/include/dtcore/dteventlogger.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtflipper</code>&nbsp;&nbsp;&nbsp;Dual-buffer ownership flipping with busy-state coordination.</summary>
+<p>Manages two preallocated buffers with upper/lower roles that can be
+swapped when neither is held.  Busy flags prevent flipping while either
+buffer is in use, and a critical-path variant avoids system calls for
+use inside interrupt or critical section contexts.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtflipper.h" target="_blank">dtcore_library/include/dtcore/dtflipper.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtglyph</code>&nbsp;&nbsp;&nbsp;Vtable facade for text glyph rendering.</summary>
+<p>Defines a two-method dispatch interface for blitting a text string onto
+a raster at a given position with a color, and for computing the bounding
+box of a string.  Concrete implementations register a vtable keyed by
+model number for selection at runtime.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtglyph.h" target="_blank">dtcore_library/include/dtcore/dtglyph.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtglyph_dos</code>&nbsp;&nbsp;&nbsp;DOS-style fixed-width glyph renderer.</summary>
+<p>Implements the dtglyph facade for blitting text and computing bounding
+boxes using a DOS-style fixed-width font.  Configurable width, height,
+and stride allow the renderer to target different raster formats.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtglyph_dos.h" target="_blank">dtcore_library/include/dtcore/dtglyph_dos.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtguid</code>&nbsp;&nbsp;&nbsp;16-byte identifier with deterministic generation and serialization.</summary>
+<p>Provides comparison, copy, zero-check, and three levels of text formatting
+for 128-bit identifiers.  Generation supports sequential process-local
+counters, hash-derived values from byte inputs or strings, and integer
+seeds.  Pack and unpack functions integrate with the dtpackx wire format.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtguid.h" target="_blank">dtcore_library/include/dtcore/dtguid.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtguidable</code>&nbsp;&nbsp;&nbsp;Vtable facade for GUID retrieval.</summary>
+<p>Defines a single-method dispatch interface allowing any object to expose
+its GUID through a common handle without exposing its concrete type.
+Implementations register a vtable keyed by model number; callers invoke
+the dispatcher with an opaque handle.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtguidable.h" target="_blank">dtcore_library/include/dtcore/dtguidable.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtguidable_pool</code>&nbsp;&nbsp;&nbsp;Fixed-capacity pool of guidable handles with GUID lookup.</summary>
+<p>Stores a bounded set of dtguidable handles and supports insertion, removal,
+count query, and GUID-based search.  Includes binary serialization for
+packing pool state into a byte buffer.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtguidable_pool.h" target="_blank">dtcore_library/include/dtcore/dtguidable_pool.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtheaper</code>&nbsp;&nbsp;&nbsp;Heap allocator with embedded length metadata and ledger tracking.</summary>
+<p>Wraps malloc with a length prefix stored ahead of the payload, enabling
+fill and release operations that are self-contained and safe.  All
+allocations and frees are counted through the dtheaper ledger channel,
+making leaks straightforward to detect in tests.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtheaper.h" target="_blank">dtcore_library/include/dtcore/dtheaper.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtkvp</code>&nbsp;&nbsp;&nbsp;Resizable key-value pair list with serialization support.</summary>
+<p>Provides a growable list of string key-value pairs with set, lookup,
+and removal by name.  Serializes to URL-encoded form, plain text, and
+compact binary with magic-number validation, using a doubling-growth
+allocation strategy to stay lean in resource-constrained environments.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtkvp.h" target="_blank">dtcore_library/include/dtcore/dtkvp.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtlcg</code>&nbsp;&nbsp;&nbsp;32-bit linear congruential pseudo-random number generator.</summary>
+<p>Provides a minimal, deterministic PRNG suitable for tests, simulations,
+and non-security uses.  State is caller-owned; seed explicitly before use.
+A range helper maps raw outputs to a bounded signed integer interval.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtlcg.h" target="_blank">dtcore_library/include/dtcore/dtlcg.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtledger</code>&nbsp;&nbsp;&nbsp;Per-class allocation accounting with counters and watermarks.</summary>
+<p>Tracks heap allocation and deallocation for named classes via static
+ledger instances.  Records current balance, cumulative totals, and high/low
+watermarks for both instance counts and byte usage.  Primarily used in
+unit tests to verify that all allocations are properly released.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtledger.h" target="_blank">dtcore_library/include/dtcore/dtledger.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtlog</code>&nbsp;&nbsp;&nbsp;Leveled logging with pluggable sink and lazy initialization.</summary>
+<p>Provides tagged, severity-leveled message emission through a lazily
+initialized default logger that writes to stdout.  The sink, hook, and
+output file are all replaceable after initialization.  A pre-emit hook
+can suppress individual messages, and dterr chain emission is built in.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtlog.h" target="_blank">dtcore_library/include/dtcore/dtlog.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtobject</code>&nbsp;&nbsp;&nbsp;Vtable facade for basic object lifecycle and identity operations.</summary>
+<p>Defines a seven-method dispatch interface covering creation, copy, disposal,
+equality, class-name query, interface membership, and string rendering.
+Implementations register a vtable keyed by model number; the facade
+dispatches through opaque handles, enabling generic containers and utilities
+to manage objects without knowing their concrete types.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtobject.h" target="_blank">dtcore_library/include/dtcore/dtobject.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtpackable</code>&nbsp;&nbsp;&nbsp;Vtable facade for polymorphic binary serialization.</summary>
+<p>Defines a four-method dispatch interface covering length query, pack,
+unpack, and post-unpack validation.  Implementations register a vtable
+keyed by model number; the facade dispatches through an opaque handle,
+enabling generic serialization pipelines without concrete type knowledge.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtpackable.h" target="_blank">dtcore_library/include/dtcore/dtpackable.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtpackx</code>&nbsp;&nbsp;&nbsp;Little-endian binary pack and unpack helpers for C types.</summary>
+<p>Provides length-query, pack, and unpack functions for integers, floats,
+booleans, bytes, float arrays, and NUL-terminated strings using a
+consistent little-endian wire format.  Return values are bytes consumed
+or written; negative indicates overflow.  Macros wrap calls with automatic
+bounds checking and error jumps.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtpackx.h" target="_blank">dtcore_library/include/dtcore/dtpackx.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtparse</code>&nbsp;&nbsp;&nbsp;Strict decimal numeric parsing with full-input validation.</summary>
+<p>Parses signed 32-bit integers and double-precision floats from C strings,
+rejecting trailing characters, partial conversions, out-of-range values,
+and non-finite results.  Addresses a common gap in libc parsers, which
+accept trailing garbage and report success.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtparse.h" target="_blank">dtcore_library/include/dtcore/dtparse.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtpicosdk_helper</code>&nbsp;&nbsp;&nbsp;RP2040 Pico SDK convenience helpers.</summary>
+<p>Provides initialization, reboot, bootloader entry, and keyboard polling
+wrappers for the Raspberry Pi Pico SDK.  Simplifies common startup and
+interactive-prompt patterns used in Pico-targeted firmware.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtpicosdk_helper.h" target="_blank">dtcore_library/include/dtcore/dtpicosdk_helper.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtrandomizer</code>&nbsp;&nbsp;&nbsp;Vtable facade for polymorphic random integer generation.</summary>
+<p>Defines a three-method dispatch interface for producing the next value,
+resetting state, and disposing an instance.  Concrete implementations
+register a vtable keyed by model number; callers hold an opaque handle
+and invoke the dispatcher without knowing the underlying algorithm.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtrandomizer.h" target="_blank">dtcore_library/include/dtcore/dtrandomizer.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtrandomizer_browngrav</code>&nbsp;&nbsp;&nbsp;Brownian random walk with gravitational attraction.</summary>
+<p>Generates successive integer values using a Brownian motion model with a
+configurable restoring force toward an attraction point.  Implements the
+dtrandomizer, dtobject, and dtpackable facades for polymorphic use and
+binary serialization of configuration and state.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtrandomizer_browngrav.h" target="_blank">dtcore_library/include/dtcore/dtrandomizer_browngrav.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtrandomizer_uniform</code>&nbsp;&nbsp;&nbsp;Uniform step random walk within a bounded range.</summary>
+<p>Generates successive integer values by applying a bounded uniform random
+step from a home position, using an LCG for the underlying randomness.
+Implements the dtrandomizer, dtobject, and dtpackable facades for
+polymorphic use and binary serialization of configuration and state.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtrandomizer_uniform.h" target="_blank">dtcore_library/include/dtcore/dtrandomizer_uniform.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtraster</code>&nbsp;&nbsp;&nbsp;Vtable facade for pixel buffer operations.</summary>
+<p>Defines a dispatch interface for raster blitting, per-pixel read/write,
+buffer management, shape query, and compatible raster creation.  Concrete
+implementations register a vtable keyed by model number, allowing
+framebuffers, sprites, and format-converting rasters to be used
+interchangeably.  Includes primitive filled and outlined rectangle drawing
+built on top of the facade.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtraster.h" target="_blank">dtcore_library/include/dtcore/dtraster.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtraster_rgb565</code>&nbsp;&nbsp;&nbsp;RGB565 raster implementation with optional big-endian storage.</summary>
+<p>Provides a pixel buffer in 16-bit RGB565 format, implementing the dtraster,
+dtobject, and dtpackable facades.  Configurable byte order allows targeting
+displays that expect big-endian packed pixels alongside the default
+little-endian layout.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtraster_rgb565.h" target="_blank">dtcore_library/include/dtcore/dtraster_rgb565.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtraster_rgba8888</code>&nbsp;&nbsp;&nbsp;RGBA8888 raster implementation.</summary>
+<p>Provides a heap-backed pixel buffer in 32-bit RGBA8888 format, implementing
+the dtraster, dtobject, and dtpackable facades.  Supports blit, per-pixel
+read/write, buffer assignment, and new-buffer allocation.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtraster_rgba8888.h" target="_blank">dtcore_library/include/dtcore/dtraster_rgba8888.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtrgb565</code>&nbsp;&nbsp;&nbsp;Packed RGB565 color type with accessors and named constants.</summary>
+<p>Stores a color as a packed 16-bit value with inline constructors from
+8-bit RGB components or a raw value.  Component accessors expand 5- and
+6-bit fields back to 8-bit values.  Includes round-trip conversion to
+and from dtrgba8888_t and a set of named color constants.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtrgb565.h" target="_blank">dtcore_library/include/dtcore/dtrgb565.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtrgba8888</code>&nbsp;&nbsp;&nbsp;32-bit RGBA color type with inline constructors and named constants.</summary>
+<p>Stores a color as four separate 8-bit R, G, B, and A bytes with an inline
+constructor and a macro initializer.  Includes a comparison function and
+a full set of named color constants matching the RGB565 palette.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtrgba8888.h" target="_blank">dtcore_library/include/dtcore/dtrgba8888.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtringfifo</code>&nbsp;&nbsp;&nbsp;Lock-free SPSC byte ring buffer over caller-provided storage.</summary>
+<p>Implements single-producer single-consumer FIFO byte transfer using atomic
+head and tail indices with no OS locking.  Storage is caller-supplied;
+the ring does not allocate.  Partial push and pop are supported, with
+the return value indicating actual bytes transferred.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtringfifo.h" target="_blank">dtcore_library/include/dtcore/dtringfifo.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtrpc</code>&nbsp;&nbsp;&nbsp;Vtable facade for KVP-based remote procedure calls.</summary>
+<p>Defines a single-method dispatch interface where request and response
+are both dtkvp_list_t instances.  A refusal flag allows the callee to
+decline without treating the exchange as an error.  Implementations
+register a vtable keyed by model number for selection at runtime.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtrpc.h" target="_blank">dtcore_library/include/dtcore/dtrpc.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtrpc_registry</code>&nbsp;&nbsp;&nbsp;Growable list of RPC handles.</summary>
+<p>Maintains a heap-allocated array of dtrpc_handle values that grows in
+fixed increments as handles are added.  Provides indexed retrieval and
+bulk disposal of all registered handles.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtrpc_registry.h" target="_blank">dtcore_library/include/dtcore/dtrpc_registry.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtstr</code>&nbsp;&nbsp;&nbsp;Heap-allocated string formatting and concatenation.</summary>
+<p>Provides printf-style string construction into new heap allocations and
+appending of formatted text to existing ones with optional separators.
+All allocations are tracked through the dtstr ledger channel; pair every
+allocation with a matching dispose call.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtstr.h" target="_blank">dtcore_library/include/dtcore/dtstr.h</a></p>
+</details>
+<details class="note">
+<summary><code>dttimeout</code>&nbsp;&nbsp;&nbsp;Timeout duration type and sentinel constants.</summary>
+<p>Defines a signed 32-bit millisecond timeout type with FOREVER (-1) and
+NOWAIT (0) sentinels for use in blocking and polling call sites.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dttimeout.h" target="_blank">dtcore_library/include/dtcore/dttimeout.h</a></p>
+</details>
+<details class="note">
+<summary><code>dttrap</code>&nbsp;&nbsp;&nbsp;Conditional diagnostic accumulator with count-triggered callback.</summary>
+<p>Accumulates formatted text lines and increments a counter on each event.
+Once the count reaches a configured threshold, trapping stops and an
+optional callback fires.  Intended for capturing the first N occurrences
+of a repeating condition during debugging.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dttrap.h" target="_blank">dtcore_library/include/dtcore/dttrap.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtunittest</code>&nbsp;&nbsp;&nbsp;Minimal C unit-test harness for suites, assertions, and reporting.</summary>
+<p>Provides suite and test runners, a pattern filter, per-test setup and
+teardown hooks, and optional ledger auditing for leak detection.  Assert
+macros cover boolean, integer, float, pointer, string, and byte-buffer
+comparisons, all jumping to a caller-defined cleanup label on failure.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtunittest.h" target="_blank">dtcore_library/include/dtcore/dtunittest.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtvtable</code>&nbsp;&nbsp;&nbsp;Model-indexed vtable registry for runtime dispatch.</summary>
+<p>Maps 32-bit model numbers to vtable pointers using caller-provided
+parallel arrays.  Registration is idempotent for existing mappings.
+Lookup uses a linear scan up to the first empty slot.  Macros reduce
+the boilerplate of defining and dispatching vtable-based APIs.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtvtable.h" target="_blank">dtcore_library/include/dtcore/dtvtable.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtwallclock</code>&nbsp;&nbsp;&nbsp;Wallclock duration formatting helpers.</summary>
+<p>Formats integer microsecond or millisecond durations into fixed-width
+HH:MM:SS strings suitable for log output and diagnostics.  Avoids
+dynamic allocation by writing into caller-provided storage.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/dtwallclock.h" target="_blank">dtcore_library/include/dtcore/dtwallclock.h</a></p>
+</details>
+<details class="note">
+<summary><code>dtcore</code>&nbsp;&nbsp;&nbsp;Library flavor and version identification macros.</summary>
+<p>Provides DTCORE_VERSION string constants that identify the library build at runtime.
+Used by dtruntime and diagnostic routines to report the active library variant in environment tables and
+log output.</p>
+<p>This file is processed by tooling in the automated build system.
+It's important to maintain the structure and formatting of the version macros for compatibility with version parsing scripts.</p>
+<p><a href="https://github.com/david-erb/dtcore/blob/main/dtcore_library/include/dtcore/version.h" target="_blank">dtcore_library/include/dtcore/version.h</a></p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
