@@ -1,6 +1,6 @@
 # dtcore
 
-# dtcore
+[![CI](https://github.com/david-erb/dtcore/actions/workflows/ci.yml/badge.svg)](https://github.com/david-erb/dtcore/actions/workflows/ci.yml) [![GitHub tag](https://img.shields.io/github/v/tag/david-erb/dtcore)](https://github.com/david-erb/dtcore/tags)
 
 **Portable C building blocks for real embedded systems.**  
 _Current release: v1.0.0_
