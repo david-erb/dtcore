@@ -1,6 +1,7 @@
 # dtcore
 
-[![CI](https://github.com/david-erb/dtcore/actions/workflows/ci.yml/badge.svg)](https://github.com/david-erb/dtcore/actions/workflows/ci.yml) [![GitHub tag](https://img.shields.io/github/v/tag/david-erb/dtcore)](https://github.com/david-erb/dtcore/tags)
+[![CI](https://github.com/david-erb/dtcore/actions/workflows/ci.yml/badge.svg)](https://github.com/david-erb/dtcore/actions/workflows/ci.yml) [![Coverage](https://codecov.io/gh/david-erb/dtcore/branch/main/graph/badge.svg)](https://codecov.io/gh/david-erb/dtcore) [![Version](https://img.shields.io/github/v/tag/david-erb/dtcore)](https://github.com/david-erb/dtcore/tags) [![Platforms](https://img.shields.io/badge/platform-Linux%20%7C%20ESP--IDF%20%7C%20Zephyr-lightgrey)](https://david-erb.github.io/dtcore/)
+
 
 **Portable C building blocks for real embedded systems.**  
 _Current release: v1.0.0_
